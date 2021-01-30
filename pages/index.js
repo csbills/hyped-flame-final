@@ -36,7 +36,7 @@ export default function Home(props) {
               <img src="img/featured1.png" alt="" className="sneaker__img" />
               <span className="sneaker__name">Nike Jordan</span>
               <span className="sneaker__price">R$299,00</span>
-              <a href="" className="button-light">Add to Cart <i class='bx bx-right-arrow-alt button-icon'></i></a>
+              <a href="" className="button-light">Add to Cart <i className='bx bx-right-arrow-alt button-icon'></i></a>
             </article>
 
             <article className="sneaker">
@@ -44,7 +44,7 @@ export default function Home(props) {
               <img src="img/featured2.png" alt="" className="sneaker__img" />
               <span className="sneaker__name">Nike Free RN</span>
               <span className="sneaker__price">R$299,00</span>
-              <a href="" className="button-light">Add to Cart <i class='bx bx-right-arrow-alt button-icon'></i></a>
+              <a href="" className="button-light">Add to Cart <i className='bx bx-right-arrow-alt button-icon'></i></a>
             </article>
 
             <article className="sneaker">
@@ -52,7 +52,7 @@ export default function Home(props) {
               <img src="img/featured3.png" alt="" className="sneaker__img" />
               <span className="sneaker__name">Nike Free RN</span>
               <span className="sneaker__price">R$299,00</span>
-              <a href="" className="button-light">Add to Cart <i class='bx bx-right-arrow-alt button-icon'></i></a>
+              <a href="" className="button-light">Add to Cart <i className='bx bx-right-arrow-alt button-icon'></i></a>
             </article>
           </div>
         </section>
@@ -63,7 +63,7 @@ export default function Home(props) {
               <div className="collection__data">
                 <h3 className="collection__name">Nike</h3>
                 <p className="collection__description">New Collection 2021</p>
-                <a href="#" className="button-light">Buy now <i class='bx bx-right-arrow-alt button-icon'></i></a>
+                <a href="#" className="button-light">Buy now <i className='bx bx-right-arrow-alt button-icon'></i></a>
               </div>
 
               <img src="img/collection1.png" alt="" className="collection__img" />
@@ -74,7 +74,7 @@ export default function Home(props) {
               <div className="collection__data">
                 <h3 className="collection__name">Adidas</h3>
                 <p className="collection__description">New Collection 2021</p>
-                <a href="#" className="button-light">Buy now <i class='bx bx-right-arrow-alt button-icon'></i></a>
+                <a href="#" className="button-light">Buy now <i className='bx bx-right-arrow-alt button-icon'></i></a>
               </div>
 
               <img src="img/collection2.png" alt="" className="collection__img" />
@@ -90,28 +90,28 @@ export default function Home(props) {
               <img src="img/women1.png" alt="" className="sneaker__img" />
               <span className="sneaker__name">Nike Free TR</span>
               <span className="sneaker__price">R$199,00</span>
-              <a href="" className="button-light">Add to Cart <i class='bx bx-right-arrow-alt button-icon'></i></a>
+              <a href="" className="button-light">Add to Cart <i className='bx bx-right-arrow-alt button-icon'></i></a>
             </article>
 
             <article className="sneaker">
               <img src="img/women2.png" alt="" className="sneaker__img" />
               <span className="sneaker__name">Nike GS Pink</span>
               <span className="sneaker__price">R$199,00</span>
-              <a href="" className="button-light">Add to Cart <i class='bx bx-right-arrow-alt button-icon'></i></a>
+              <a href="" className="button-light">Add to Cart <i className='bx bx-right-arrow-alt button-icon'></i></a>
             </article>
 
             <article className="sneaker">
               <img src="img/women3.png" alt="" className="sneaker__img" />
               <span className="sneaker__name">Nike Get 5</span>
               <span className="sneaker__price">R$199,00</span>
-              <a href="" className="button-light">Add to Cart <i class='bx bx-right-arrow-alt button-icon'></i></a>
+              <a href="" className="button-light">Add to Cart <i className='bx bx-right-arrow-alt button-icon'></i></a>
             </article>
 
             <article className="sneaker">
               <img src="img/women4.png" alt="" className="sneaker__img" />
               <span className="sneaker__name">Nike Get 5</span>
               <span className="sneaker__price">R$199,00</span>
-              <a href="" className="button-light">Add to Cart <i class='bx bx-right-arrow-alt button-icon'></i></a>
+              <a href="" className="button-light">Add to Cart <i className='bx bx-right-arrow-alt button-icon'></i></a>
             </article>
           </div>
         </section>
@@ -136,7 +136,7 @@ export default function Home(props) {
               <h3 className="new__title">Mens Shoes</h3>
               <span className="new__price">From R$119,99</span>
               <a href="#" className="button-light">View Collection <i
-                class='bx bx-right-arrow-alt button-icon'></i></a>
+                className='bx bx-right-arrow-alt button-icon'></i></a>
             </div>
 
             <div className="new__sneaker">

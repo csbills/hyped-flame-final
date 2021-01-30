@@ -152,7 +152,7 @@ img{
         width: 70%;
         height: 100vh;
         padding: 2rem;
-        background-color: var(--white-color);
+        background-color: #333;
         transition: .5s;
     }
 }
