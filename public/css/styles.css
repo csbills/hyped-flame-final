@@ -152,7 +152,8 @@ img{
         width: 70%;
         height: 100vh;
         padding: 2rem;
-        background-color: #333;
+        background-color: rgba(255,255,255,.5);
+        backdrop-filter: blur(10px);
         transition: .5s;
     }
 }
