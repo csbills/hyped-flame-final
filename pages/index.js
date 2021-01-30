@@ -1,65 +1,201 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Layout from '../components/Layout';
+import getCommerce from '../utils/commerce';
 
-export default function Home() {
+export default function Home(props) {
+  const { products } = props;
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <Layout title="Home" commercePublicKey={props.commercePublicKey}>
+      {products.length === 0 && (
+        /*<Alert severity="success">No product found</Alert>*/
+        <div></div>
+      )}
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+      <main className="l-main">
+        <section className="home" id="home">
+          <div className="home__container bd-grid">
+            <div className="home__sneaker">
+              <div className="home__shape"></div>
+              <img src="img/imghome.png" alt="" className="home__img" />
+            </div>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+            <div className="home__date">
+              <span className="home__new">New In</span>
+              <h1 className="home__title">YEEZY BOOST SPLY - 350</h1>
+              <p className="home__description">Explore the new collections of sneakers</p>
+              <a href="#" className="button">Explore Now</a>
+            </div>
+          </div>
+        </section>
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+        <section className="featured section" id="featured">
+          <h2 className="section-title">FEATURED</h2>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+          <div className="featured__container bd-grid">
+            <article className="sneaker">
+              <div className="sneaker__sale">Sale</div>
+              <img src="img/featured1.png" alt="" className="sneaker__img" />
+              <span className="sneaker__name">Nike Jordan</span>
+              <span className="sneaker__price">R$299,00</span>
+              <a href="" className="button-light">Add to Cart <i class='bx bx-right-arrow-alt button-icon'></i></a>
+            </article>
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+            <article className="sneaker">
+              <div className="sneaker__sale">Sale</div>
+              <img src="img/featured2.png" alt="" className="sneaker__img" />
+              <span className="sneaker__name">Nike Free RN</span>
+              <span className="sneaker__price">R$299,00</span>
+              <a href="" className="button-light">Add to Cart <i class='bx bx-right-arrow-alt button-icon'></i></a>
+            </article>
 
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+            <article className="sneaker">
+              <div className="sneaker__sale">Sale</div>
+              <img src="img/featured3.png" alt="" className="sneaker__img" />
+              <span className="sneaker__name">Nike Free RN</span>
+              <span className="sneaker__price">R$299,00</span>
+              <a href="" className="button-light">Add to Cart <i class='bx bx-right-arrow-alt button-icon'></i></a>
+            </article>
+          </div>
+        </section>
+
+        <section className="collection section">
+          <div className="collection__container bd-grid">
+            <div className="collection__card">
+              <div className="collection__data">
+                <h3 className="collection__name">Nike</h3>
+                <p className="collection__description">New Collection 2021</p>
+                <a href="#" className="button-light">Buy now <i class='bx bx-right-arrow-alt button-icon'></i></a>
+              </div>
+
+              <img src="img/collection1.png" alt="" className="collection__img" />
+
+            </div>
+
+            <div className="collection__card">
+              <div className="collection__data">
+                <h3 className="collection__name">Adidas</h3>
+                <p className="collection__description">New Collection 2021</p>
+                <a href="#" className="button-light">Buy now <i class='bx bx-right-arrow-alt button-icon'></i></a>
+              </div>
+
+              <img src="img/collection2.png" alt="" className="collection__img" />
+            </div>
+          </div>
+        </section>
+
+        <section className="women section" id="women">
+          <h2 className="section-title">WOMEN SNEAKERS</h2>
+
+          <div className="women__container bd-grid">
+            <article className="sneaker">
+              <img src="img/women1.png" alt="" className="sneaker__img" />
+              <span className="sneaker__name">Nike Free TR</span>
+              <span className="sneaker__price">R$199,00</span>
+              <a href="" className="button-light">Add to Cart <i class='bx bx-right-arrow-alt button-icon'></i></a>
+            </article>
+
+            <article className="sneaker">
+              <img src="img/women2.png" alt="" className="sneaker__img" />
+              <span className="sneaker__name">Nike GS Pink</span>
+              <span className="sneaker__price">R$199,00</span>
+              <a href="" className="button-light">Add to Cart <i class='bx bx-right-arrow-alt button-icon'></i></a>
+            </article>
+
+            <article className="sneaker">
+              <img src="img/women3.png" alt="" className="sneaker__img" />
+              <span className="sneaker__name">Nike Get 5</span>
+              <span className="sneaker__price">R$199,00</span>
+              <a href="" className="button-light">Add to Cart <i class='bx bx-right-arrow-alt button-icon'></i></a>
+            </article>
+
+            <article className="sneaker">
+              <img src="img/women4.png" alt="" className="sneaker__img" />
+              <span className="sneaker__name">Nike Get 5</span>
+              <span className="sneaker__price">R$199,00</span>
+              <a href="" className="button-light">Add to Cart <i class='bx bx-right-arrow-alt button-icon'></i></a>
+            </article>
+          </div>
+        </section>
+
+        <section className="offer section">
+          <div className="offer__container bd-grid">
+            <div className="offer__data">
+              <h3 className="offer__title">50% OFF</h3>
+              <p className="offer__description">In Adidas Supertars sneakers</p>
+              <a href="#" className="button">Shop now</a>
+            </div>
+            <img src="img/offert.png" alt="" className="offer__img" />
+          </div>
+        </section>
+
+        <section className="new section" id="new">
+          <h2 className="section-title">NEW COLLECTION</h2>
+
+          <div className="new__container bd-grid">
+            <div className="new__mens">
+              <img src="img/new1.png" alt="" className="new__mens-img" />
+              <h3 className="new__title">Mens Shoes</h3>
+              <span className="new__price">From R$119,99</span>
+              <a href="#" className="button-light">View Collection <i
+                class='bx bx-right-arrow-alt button-icon'></i></a>
+            </div>
+
+            <div className="new__sneaker">
+              <div className="new__sneaker-card">
+                <img src="img/new2.png" alt="" className="new__sneaker-img" />
+                <div className="new__sneaker-overlay">
+                  <a href="#" className="button">Add to Cart</a>
+                </div>
+              </div>
+
+              <div className="new__sneaker-card">
+                <img src="img/new3.png" alt="" className="new__sneaker-img" />
+                <div className="new__sneaker-overlay">
+                  <a href="#" className="button">Add to Cart</a>
+                </div>
+              </div>
+
+              <div className="new__sneaker-card">
+                <img src="img/new4.png" alt="" className="new__sneaker-img" />
+                <div className="new__sneaker-overlay">
+                  <a href="#" className="button">Add to Cart</a>
+                </div>
+              </div>
+
+              <div className="new__sneaker-card">
+                <img src="img/new5.png" alt="" className="new__sneaker-img" />
+                <div className="new__sneaker-overlay">
+                  <a href="#" className="button">Add to Cart</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="newsletter section">
+          <div className="newsletter__container bd-grid">
+            <div>
+              <h3 className="newsletter__title">Subscribe And Get <br></br> 10% OFF</h3>
+                <p className="newsletter description">Get 10% discount for all products</p>
+                </div>
+
+              <form action="" className="newsletter__subscribe">
+                <input type="text" className="newsletter__input" placeholder="@email.com" />
+                  <a href="#" className="button">Subscribe</a>
+                </form>
+            </div>
+        </section>
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
+    </Layout>
   )
+}
+
+export async function getStaticProps() {
+  const commerce = getCommerce();
+  const {data: products } = await commerce.products.list();
+
+  return {
+          props: {
+          products,
+    },
+  };
 }
