@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { Store } from './Store';
 import getCommerce from '../utils/commerce';
 import { siteName } from '../utils/config';
+import { Badge, CircularProgress, CardMedia, CardContent } from '@material-ui/core';
 import {
     CART_RETRIEVE_REQUEST,
     CART_RETRIEVE_SUCCESS,
@@ -33,25 +34,67 @@ export default function Layout({
             </head>
             <body>
                 <header className="l-header" id="header">
-                    <nav className="nav bg-grid">
+                    <nav className="nav bd-grid">
                         <div className="nav__toggle" id="nav-toggle">
                             <i className='bx bxs-grid'></i>
                         </div>
 
-                        <a href="/" className="nav__logo">Hyped Flame</a>
+                        <a href="/" className="nav__logo">HYPED FLAME</a>
 
                         <div className="nav__menu" id="nav-menu">
                             <ul className="nav__list">
-                                <li className="nav__item"><a href="./index.html" className="nav__link active">Home</a></li>
-                                <li className="nav__item"><a href="#featured" className="nav__link">Featured</a></li>
-                                <li className="nav__item"><a href="#women" className="nav__link">Women</a></li>
-                                <li className="nav__item"><a href="#new" className="nav__link">New</a></li>
-                                <li className="nav__item"><a href="./shop.html" className="nav__link">Shop</a></li>
+                                <li className="nav__item"><a href="/" className="nav__link active">Home</a></li>
+                                <li className="nav__item"><a href="#featured" className="nav__link">Ofertas</a></li>
+                                <li className="nav__item"><a href="#women" className="nav__link">Mulheres</a></li>
+                                <li className="nav__item"><a href="#new" className="nav__link">Nova Coleção</a></li>
+                                <li className="nav__item"><a href="#" className="nav__link">Shop</a></li>
                             </ul>
                         </div>
 
                         <div className="nav__shop">
-                            <i className='bx bx-shopping-bag'></i>
+                            <div className="subnav">
+                                <button className="cartButton">
+                                    <a href="/cart">
+                                        {cart.loading ? (
+                                            <CircularProgress />
+                                        ) : cart.data.total_items > 0 ? (
+                                            <Badge badgeContent={cart.data.total_items} color="primary">
+                                                <img src="img/shopping-cart.png" width="25" height="25" />
+                                            </Badge>
+                                        ) : (
+                                                    <img src="img/shopping-cart.png" width="25" height="25" />
+                                                )}
+                                    </a>
+                                </button>
+
+                                <div className="subnavcontentCart">
+                                    {cart.loading ? (
+                                        <CircularProgress />
+                                    ) : cart.data.line_items.length === 0 ? (
+                                        <h1>
+                                            Carrinho está vázio.
+                                        </h1>
+                                    ) : (
+                                                <div>
+                                                    <h1>Carrinho</h1>
+                                                    {cart.data.line_items.map((cartItem) => (
+                                                        <div className="gridCart">
+                                                            <CardMedia
+                                                                component="img"
+                                                                alt={cartItem.name}
+                                                                image={cartItem.media.source}
+                                                            />
+
+                                                            <CardContent>
+                                                                {cartItem.quantity}x {cartItem.name}<br></br>
+                                                                {cartItem.price.formatted_with_symbol}
+                                                            </CardContent>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            )}
+                                </div>
+                            </div>
                         </div>
                     </nav>
                 </header>

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { StoreProvider } from '../components/Store';
+import '../public/css/styles.css'
 
 export default function MyApp({ pageProps, Component }) {
   useEffect(() => {
@@ -11,8 +12,8 @@ export default function MyApp({ pageProps, Component }) {
   }, []);
 
   return (
-    <StoreProvider>     
-        <Component {...pageProps} />
+    <StoreProvider>    
+        <Component {...pageProps} />    
     </StoreProvider>
   );
 }

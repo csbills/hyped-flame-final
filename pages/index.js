@@ -2,14 +2,8 @@ import Layout from '../components/Layout';
 import getCommerce from '../utils/commerce';
 
 export default function Home(props) {
-  const { products } = props;
   return (
     <Layout title="Home" commercePublicKey={props.commercePublicKey}>
-      {products.length === 0 && (
-        /*<Alert severity="success">No product found</Alert>*/
-        <div></div>
-      )}
-
       <main className="l-main">
         <section className="home" id="home">
           <div className="home__container bd-grid">
@@ -19,64 +13,49 @@ export default function Home(props) {
             </div>
 
             <div className="home__date">
-              <span className="home__new">New In</span>
-              <h1 className="home__title">YEEZY BOOST SPLY - 350</h1>
-              <p className="home__description">Explore the new collections of sneakers</p>
-              <a href="#" className="button">Explore Now</a>
+              <span className="home__new">ADIDAS</span>
+              <h1 className="home__title">YEEZY BOOST SPLY - 350 V2</h1>
+              <p className="home__description">Explore a nova coleção do Yeezy Boost 350 V2.</p>
+              <a href="#new" className="button">Explore Agora</a>
             </div>
           </div>
         </section>
 
+        {/* SEÇÃO DE OFERTAS (PRODUTOS VINDO DA API)*/}
         <section className="featured section" id="featured">
-          <h2 className="section-title">FEATURED</h2>
-
+          <h2 className="section-title">OFERTAS</h2>
           <div className="featured__container bd-grid">
-            <article className="sneaker">
-              <div className="sneaker__sale">Sale</div>
-              <img src="img/featured1.png" alt="" className="sneaker__img" />
-              <span className="sneaker__name">Nike Jordan</span>
-              <span className="sneaker__price">R$299,00</span>
-              <a href="" className="button-light">Add to Cart <i className='bx bx-right-arrow-alt button-icon'></i></a>
-            </article>
-
-            <article className="sneaker">
-              <div className="sneaker__sale">Sale</div>
-              <img src="img/featured2.png" alt="" className="sneaker__img" />
-              <span className="sneaker__name">Nike Free RN</span>
-              <span className="sneaker__price">R$299,00</span>
-              <a href="" className="button-light">Add to Cart <i className='bx bx-right-arrow-alt button-icon'></i></a>
-            </article>
-
-            <article className="sneaker">
-              <div className="sneaker__sale">Sale</div>
-              <img src="img/featured3.png" alt="" className="sneaker__img" />
-              <span className="sneaker__name">Nike Free RN</span>
-              <span className="sneaker__price">R$299,00</span>
-              <a href="" className="button-light">Add to Cart <i className='bx bx-right-arrow-alt button-icon'></i></a>
-            </article>
+            {props.productsoferta.map((product) => (
+              <article className="sneaker">
+                <div className="sneaker__sale">oferta</div>
+                <img src={product.media.source} alt="" className="sneaker__img" />
+                <span className="sneaker__name">{product.name}</span>
+                <span className="sneaker__price">{product.price.formatted_with_symbol}</span>
+                <a href={`/products/${product.permalink}`} className="button-light">Detalhes <i className='bx bx-right-arrow-alt button-icon'></i></a>
+              </article>
+            ))}
           </div>
         </section>
 
         <section className="collection section">
+          <h2 className="section-title">MARCAS</h2>
           <div className="collection__container bd-grid">
+
             <div className="collection__card">
               <div className="collection__data">
                 <h3 className="collection__name">Nike</h3>
-                <p className="collection__description">New Collection 2021</p>
-                <a href="#" className="button-light">Buy now <i className='bx bx-right-arrow-alt button-icon'></i></a>
+                <p className="collection__description">Nova Coleção 2021</p>
+                <a href="#" className="button-light">Confira já <i className='bx bx-right-arrow-alt button-icon'></i></a>
               </div>
-
               <img src="img/collection1.png" alt="" className="collection__img" />
-
             </div>
 
             <div className="collection__card">
               <div className="collection__data">
                 <h3 className="collection__name">Adidas</h3>
-                <p className="collection__description">New Collection 2021</p>
-                <a href="#" className="button-light">Buy now <i className='bx bx-right-arrow-alt button-icon'></i></a>
+                <p className="collection__description">Nova Coleção 2021</p>
+                <a href="#" className="button-light">Confira já <i className='bx bx-right-arrow-alt button-icon'></i></a>
               </div>
-
               <img src="img/collection2.png" alt="" className="collection__img" />
             </div>
           </div>
@@ -127,46 +106,28 @@ export default function Home(props) {
           </div>
         </section>
 
+        {/* SEÇÃO DE COLEÇÕES (PRODUTOS VINDO DA API)*/}
         <section className="new section" id="new">
-          <h2 className="section-title">NEW COLLECTION</h2>
+          <h2 className="section-title">LANÇAMENTOS</h2>
 
           <div className="new__container bd-grid">
             <div className="new__mens">
               <img src="img/new1.png" alt="" className="new__mens-img" />
-              <h3 className="new__title">Mens Shoes</h3>
-              <span className="new__price">From R$119,99</span>
-              <a href="#" className="button-light">View Collection <i
+              <h3 className="new__title">Tênis Masculino</h3>
+              <span className="new__price">A partir de R$119,99</span>
+              <a href="#" className="button-light">Confira já <i
                 className='bx bx-right-arrow-alt button-icon'></i></a>
             </div>
 
             <div className="new__sneaker">
-              <div className="new__sneaker-card">
-                <img src="img/new2.png" alt="" className="new__sneaker-img" />
-                <div className="new__sneaker-overlay">
-                  <a href="#" className="button">Add to Cart</a>
+              {props.productsnovacolecao.map((product) => (
+                <div className="new__sneaker-card">
+                  <img src={product.media.source} alt="" className="new__sneaker-img" />
+                  <div className="new__sneaker-overlay">
+                    <a href={`/products/${product.permalink}`} className="button">Add to Cart</a>
+                  </div>
                 </div>
-              </div>
-
-              <div className="new__sneaker-card">
-                <img src="img/new3.png" alt="" className="new__sneaker-img" />
-                <div className="new__sneaker-overlay">
-                  <a href="#" className="button">Add to Cart</a>
-                </div>
-              </div>
-
-              <div className="new__sneaker-card">
-                <img src="img/new4.png" alt="" className="new__sneaker-img" />
-                <div className="new__sneaker-overlay">
-                  <a href="#" className="button">Add to Cart</a>
-                </div>
-              </div>
-
-              <div className="new__sneaker-card">
-                <img src="img/new5.png" alt="" className="new__sneaker-img" />
-                <div className="new__sneaker-overlay">
-                  <a href="#" className="button">Add to Cart</a>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>
@@ -175,14 +136,14 @@ export default function Home(props) {
           <div className="newsletter__container bd-grid">
             <div>
               <h3 className="newsletter__title">Subscribe And Get <br></br> 10% OFF</h3>
-                <p className="newsletter description">Get 10% discount for all products</p>
-                </div>
-
-              <form action="" className="newsletter__subscribe">
-                <input type="text" className="newsletter__input" placeholder="@email.com" />
-                  <a href="#" className="button">Subscribe</a>
-                </form>
+              <p className="newsletter description">Get 10% discount for all products</p>
             </div>
+
+            <form action="" className="newsletter__subscribe">
+              <input type="text" className="newsletter__input" placeholder="@email.com" />
+              <a href="#" className="button">Subscribe</a>
+            </form>
+          </div>
         </section>
       </main>
     </Layout>
@@ -191,11 +152,19 @@ export default function Home(props) {
 
 export async function getStaticProps() {
   const commerce = getCommerce();
-  const {data: products } = await commerce.products.list();
+
+  const { data: productsoferta } = await commerce.products.list({
+    category_slug: "oferta"
+  });
+
+  const { data: productsnovacolecao } = await commerce.products.list({
+    category_slug: "nova-colecao"
+  });
 
   return {
-          props: {
-          products,
+    props: {
+      productsoferta,
+      productsnovacolecao,
     },
   };
 }
