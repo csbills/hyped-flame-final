@@ -3,15 +3,20 @@ import getCommerce from '../../utils/commerce';
 import Layout from '../../components/Layout';
 import { Store } from '../../components/Store';
 import Router from 'next/router';
+import { Alert } from '@material-ui/lab';
+import {
+    Select,
+    MenuItem,
+} from '@material-ui/core';
 import { CART_RETRIEVE_SUCCESS } from '../../utils/constants';
 
-export default function Home(props) { 
-
+export default function Home(props) {
     /* ================================== */
     const { state, dispatch } = useContext(Store);
     const { userInfo, cart } = state;
 
     const [quantity, setQuantity] = useState(1);
+    const [size, setSize] = useState();
     const { product } = props;
     const addToCartHandler = async () => {
         const commerce = getCommerce(props.commercePublicKey);
@@ -20,7 +25,7 @@ export default function Home(props) {
         );
         if (lineItem) {
             const cartData = await commerce.cart.update(lineItem.id, {
-                quantity: quantity,
+                quantity: quantity,                
             });
             dispatch({ type: CART_RETRIEVE_SUCCESS, payload: cartData.cart });
             Router.push('/cart');
@@ -39,14 +44,14 @@ export default function Home(props) {
                         <div className="sneaker__figure__product"></div>
 
                         <div>
-                            <img src={product.media.source} width="922" height="486" alt="" className="sneaker__img__product shows" color="#000" />
+                            <img src={product.media.source} width="2000" height="1200" alt="" className="sneaker__img__product" />
                         </div>
                     </div>
 
 
                     <div className="info">
 
-                        <div className="data">                           
+                        <div className="data">
                             <h1 className="data__title">{product.name}</h1>
                             <p className="data__description" dangerouslySetInnerHTML={{ __html: product.description }}></p>
                         </div>
@@ -54,21 +59,39 @@ export default function Home(props) {
                         <div className="actions">
 
                             <div className="size">
-                                <h3 className="size__title">Tamanhos</h3>
+                                <h3 className="size__title">Tamanho</h3>
                                 <div className="size__content">
-                                    <span className="size__tallas active">37</span>
-                                    <span className="size__tallas">38</span>
-                                    <span className="size__tallas">40</span>
-                                    <span className="size__tallas">41</span>                                   
+                                    <Select className="size__tallas" id="size" fullWidth
+                                        onChange={(e) => setSize(e.target.value)} value={size}>
+                                        {product.variants.map(variant => (
+                                            <div key={variant.id}>
+                                                {variant.options.map(option => (
+                                                    <MenuItem key={option.id} value={option.name}>
+                                                      {option.name}
+                                                    </MenuItem>
+                                                ))}
+                                            </div>
+                                        ))}
+                                    </Select>
                                 </div>
                             </div>
 
                             <div className="cant">
                                 <h3 className="cant__title">Quantidade</h3>
                                 <div className="cant__content">
-                                    <span>-</span>
-                                    <input type="number" id="quantity" name="tentacles" min="1" max="10"/>
-                                    <span>+</span>                                    
+                                    <Select
+                                        labelId="quantity-label"
+                                        id="quantity"
+                                        fullWidth
+                                        onChange={(e) => setQuantity(e.target.value)}
+                                        value={quantity}>
+                                        {[...Array(product.quantity).keys()].map((x) => (
+                                            <MenuItem key={x + 1} value={x + 1}>
+                                                {x + 1}
+                                            </MenuItem>
+                                        ))}
+
+                                    </Select>
                                 </div>
                             </div>
                         </div>
@@ -80,7 +103,7 @@ export default function Home(props) {
                     </div>
                 </div>
             </div>
-        </Layout>
+        </Layout >
     );
 }
 

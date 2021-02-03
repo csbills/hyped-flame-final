@@ -48,3 +48,10 @@ window.onscroll = () => {
     const nav = document.getElementById('header');
     if(this.scrollY >= 200) nav.classList.add('scroll-header'); else nav.classList.remove('scroll-header');
 }
+
+const sizes = document.querySelectorAll('.size__tallas');
+function changeSize(){
+    sizes.forEach(size => size.classList.remove('active'));
+    this.classList.add('active');
+}
+

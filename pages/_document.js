@@ -17,8 +17,7 @@ class MyDocument extends Document {
                 </Head>
                 <body>
                     <Main />
-                    <NextScript />
-                    <script src="js/main.js"></script>
+                    <NextScript />                    
                 </body>
             </Html>
         )

@@ -27,7 +27,7 @@ export default function Layout({
     }, []);
 
     return (
-        <>
+        <React.Fragment>
             <head>
                 <title>{`${title} - ${siteName}`}</title>
                 <link rel="icon" href="/favicon.ico" />
@@ -43,11 +43,11 @@ export default function Layout({
 
                         <div className="nav__menu" id="nav-menu">
                             <ul className="nav__list">
-                                <li className="nav__item"><a href="/" className="nav__link active">Home</a></li>
+                                <li className="nav__item"><a href="/" className="nav__link">Home</a></li>
                                 <li className="nav__item"><a href="#featured" className="nav__link">Ofertas</a></li>
-                                <li className="nav__item"><a href="#women" className="nav__link">Mulheres</a></li>
+                                <li className="nav__item"><a href="#women" className="nav__link">Feminino</a></li>
                                 <li className="nav__item"><a href="#new" className="nav__link">Nova Coleção</a></li>
-                                <li className="nav__item"><a href="#" className="nav__link">Shop</a></li>
+                                <li className="nav__item"><a href="/shop" className="nav__link">Shop</a></li>
                             </ul>
                         </div>
 
@@ -59,10 +59,10 @@ export default function Layout({
                                             <CircularProgress />
                                         ) : cart.data.total_items > 0 ? (
                                             <Badge badgeContent={cart.data.total_items} color="primary">
-                                                <img src="img/shopping-cart.png" width="25" height="25" />
+                                                <img width="25" height="25" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAACeklEQVRYR72X4XXVMAyFv0wAGxQmACYoTAAdgQkKE7z3JqBswAaUCWAD2g06QpkgHAU7x3EkS/YD/C+xY93ceyXLE8qYgFmb6Hg3uod8NzSsgPn9fwc09BeBj4YZAp5NcD3Da+BlinUH/AA+Aw+B+LslG0D5QfzjUP4B+OQElDUCrGuMMHSTmIkEEkACTB3aTy+AOgz4Dvha7H4PHAGRSoZIJ88vijVXwG0Zo1SiRrpjyMkS8cVF2uQbIAA1H9zO8DZNyDfPa0BWWelhSP7+ZwryS0wNPBpqPE2mfpLmX01wF6ltO1PnjxQZSyOb7BQAJdsukyU+znBjsLkpwlOHf8Qbh7T+lLxiGnuC4wyHtOCUnhe/yvgbki2AcoAWoAT6OMEhBV4BeampSSbe+J484qard4Q0AIjZ30zwULKl1aGSCe+HmvMBO+yk33goU11I01OjRsDvASm7rAxNcJr/FDoZOw85tcVa3/SiJ9nyBwpz6/tGxliBzwdkMdTSqE77nJVWOch7NRkqJfPqR4eBNuWgLh/aWbYWtAwokC095m8DUoKZGkcPSIettodqQKXGPQz1SJbLirZ/KMs6gkWWnp9lTo+0gKhN3/CdVec2+6wPqRA2T/WIyUuqKu+pXUAo7YHwKR3RyiqwNfhNyoqpxXS5bbDaDI8lT7LcV+U+yWSoUWFD12sPqHYmbhhSDLt2hiJZcbhGVHHXDB8d0VbVRVBcs1qHdNnL13tGbqVubxwBCrwHvuwkq1qI+gqzrleq+jIXud4oANWrlFap5dt8A82XPfPwDJhYI0uuUXLI7u5qC6AzGnVTmUGgqxWCkv/7ZZZkw5FHmckBfwMaZecl3p76CAAAAABJRU5ErkJggg==" />
                                             </Badge>
                                         ) : (
-                                                    <img src="img/shopping-cart.png" width="25" height="25" />
+                                                    <img width="25" height="25" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAACeklEQVRYR72X4XXVMAyFv0wAGxQmACYoTAAdgQkKE7z3JqBswAaUCWAD2g06QpkgHAU7x3EkS/YD/C+xY93ceyXLE8qYgFmb6Hg3uod8NzSsgPn9fwc09BeBj4YZAp5NcD3Da+BlinUH/AA+Aw+B+LslG0D5QfzjUP4B+OQElDUCrGuMMHSTmIkEEkACTB3aTy+AOgz4Dvha7H4PHAGRSoZIJ88vijVXwG0Zo1SiRrpjyMkS8cVF2uQbIAA1H9zO8DZNyDfPa0BWWelhSP7+ZwryS0wNPBpqPE2mfpLmX01wF6ltO1PnjxQZSyOb7BQAJdsukyU+znBjsLkpwlOHf8Qbh7T+lLxiGnuC4wyHtOCUnhe/yvgbki2AcoAWoAT6OMEhBV4BeampSSbe+J484qard4Q0AIjZ30zwULKl1aGSCe+HmvMBO+yk33goU11I01OjRsDvASm7rAxNcJr/FDoZOw85tcVa3/SiJ9nyBwpz6/tGxliBzwdkMdTSqE77nJVWOch7NRkqJfPqR4eBNuWgLh/aWbYWtAwokC095m8DUoKZGkcPSIettodqQKXGPQz1SJbLirZ/KMs6gkWWnp9lTo+0gKhN3/CdVec2+6wPqRA2T/WIyUuqKu+pXUAo7YHwKR3RyiqwNfhNyoqpxXS5bbDaDI8lT7LcV+U+yWSoUWFD12sPqHYmbhhSDLt2hiJZcbhGVHHXDB8d0VbVRVBcs1qHdNnL13tGbqVubxwBCrwHvuwkq1qI+gqzrleq+jIXud4oANWrlFap5dt8A82XPfPwDJhYI0uuUXLI7u5qC6AzGnVTmUGgqxWCkv/7ZZZkw5FHmckBfwMaZecl3p76CAAAAABJRU5ErkJggg==" />
                                                 )}
                                     </a>
                                 </button>
@@ -78,7 +78,7 @@ export default function Layout({
                                                 <div>
                                                     <h1>Carrinho</h1>
                                                     {cart.data.line_items.map((cartItem) => (
-                                                        <div className="gridCart">
+                                                        <div className="gridCart" key={cartItem.id}>
                                                             <CardMedia
                                                                 component="img"
                                                                 alt={cartItem.name}
@@ -86,8 +86,13 @@ export default function Layout({
                                                             />
 
                                                             <CardContent>
-                                                                {cartItem.quantity}x {cartItem.name}<br></br>
-                                                                {cartItem.price.formatted_with_symbol}
+                                                                {cartItem.variants.map((variant, i) =>
+                                                                    <p key={i}>
+                                                                        {variant.name}: {variant.option}
+                                                                    </p>
+                                                                )}
+                                                                <h6>{cartItem.quantity}x {cartItem.name}<br></br>
+                                                                    {cartItem.price.formatted_with_symbol}</h6>
                                                             </CardContent>
                                                         </div>
                                                     ))}
@@ -107,16 +112,16 @@ export default function Layout({
                     <div className="footer__container bd-grid">
                         <div className="footer__box">
                             <h3 className="footer__title">Hyped Flame</h3>
-                            <p className="footer__description">New collection of shoes 2021.</p>
+                            <p className="footer__description">Nova Coleção 2021.</p>
                         </div>
 
                         <div className="footer__box">
                             <h3 className="footer__title">Explore</h3>
                             <ul>
                                 <li><a href="#home" className="footer__link">Home</a></li>
-                                <li><a href="#featured" className="footer__link">Featured</a></li>
-                                <li><a href="#women" className="footer__link">Women</a></li>
-                                <li><a href="#new" className="footer__link">New</a></li>
+                                <li><a href="#featured" className="footer__link">Ofertas</a></li>
+                                <li><a href="#women" className="footer__link">Feminino</a></li>
+                                <li><a href="#new" className="footer__link">Nova Coleção</a></li>
                             </ul>
                         </div>
 
@@ -142,6 +147,6 @@ export default function Layout({
                     <p className="footer__copy">&#169; 2021 Hyped Flame. All rights reserved</p>
                 </footer>
             </body>
-        </>
+        </React.Fragment>
     )
 }

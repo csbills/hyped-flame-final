@@ -4,7 +4,7 @@ import getCommerce from '../utils/commerce';
 export default function Home(props) {
   return (
     <Layout title="Home" commercePublicKey={props.commercePublicKey}>
-      <main className="l-main">
+      <div className="l-main">
         <section className="home" id="home">
           <div className="home__container bd-grid">
             <div className="home__sneaker">
@@ -26,9 +26,9 @@ export default function Home(props) {
           <h2 className="section-title">OFERTAS</h2>
           <div className="featured__container bd-grid">
             {props.productsoferta.map((product) => (
-              <article className="sneaker">
+              <article className="sneaker" key={product.id}>
                 <div className="sneaker__sale">oferta</div>
-                <img src={product.media.source} alt="" className="sneaker__img" />
+                <img src={product.media.source} alt={product.name} className="sneaker__img" />
                 <span className="sneaker__name">{product.name}</span>
                 <span className="sneaker__price">{product.price.formatted_with_symbol}</span>
                 <a href={`/products/${product.permalink}`} className="button-light">Detalhes <i className='bx bx-right-arrow-alt button-icon'></i></a>
@@ -62,36 +62,17 @@ export default function Home(props) {
         </section>
 
         <section className="women section" id="women">
-          <h2 className="section-title">WOMEN SNEAKERS</h2>
+          <h2 className="section-title">FEMININO</h2>
 
-          <div className="women__container bd-grid">
-            <article className="sneaker">
-              <img src="img/women1.png" alt="" className="sneaker__img" />
-              <span className="sneaker__name">Nike Free TR</span>
-              <span className="sneaker__price">R$199,00</span>
-              <a href="" className="button-light">Add to Cart <i className='bx bx-right-arrow-alt button-icon'></i></a>
-            </article>
-
-            <article className="sneaker">
-              <img src="img/women2.png" alt="" className="sneaker__img" />
-              <span className="sneaker__name">Nike GS Pink</span>
-              <span className="sneaker__price">R$199,00</span>
-              <a href="" className="button-light">Add to Cart <i className='bx bx-right-arrow-alt button-icon'></i></a>
-            </article>
-
-            <article className="sneaker">
-              <img src="img/women3.png" alt="" className="sneaker__img" />
-              <span className="sneaker__name">Nike Get 5</span>
-              <span className="sneaker__price">R$199,00</span>
-              <a href="" className="button-light">Add to Cart <i className='bx bx-right-arrow-alt button-icon'></i></a>
-            </article>
-
-            <article className="sneaker">
-              <img src="img/women4.png" alt="" className="sneaker__img" />
-              <span className="sneaker__name">Nike Get 5</span>
-              <span className="sneaker__price">R$199,00</span>
-              <a href="" className="button-light">Add to Cart <i className='bx bx-right-arrow-alt button-icon'></i></a>
-            </article>
+          <div className="featured__container bd-grid">
+            {props.productsfeminino.map((product) => (
+              <article className="sneaker" key={product.id}>
+                <img src={product.media.source} alt={product.name} className="sneaker__img" />
+                <span className="sneaker__name">{product.name}</span>
+                <span className="sneaker__price">{product.price.formatted_with_symbol}</span>
+                <a href={`/products/${product.permalink}`} className="button-light">Detalhes <i className='bx bx-right-arrow-alt button-icon'></i></a>
+              </article>
+            ))}
           </div>
         </section>
 
@@ -121,7 +102,7 @@ export default function Home(props) {
 
             <div className="new__sneaker">
               {props.productsnovacolecao.map((product) => (
-                <div className="new__sneaker-card">
+                <div className="new__sneaker-card" key={product.id}>
                   <img src={product.media.source} alt="" className="new__sneaker-img" />
                   <div className="new__sneaker-overlay">
                     <a href={`/products/${product.permalink}`} className="button">Add to Cart</a>
@@ -145,7 +126,7 @@ export default function Home(props) {
             </form>
           </div>
         </section>
-      </main>
+      </div>
     </Layout>
   )
 }
@@ -161,10 +142,15 @@ export async function getStaticProps() {
     category_slug: "nova-colecao"
   });
 
+  const { data: productsfeminino } = await commerce.products.list({
+    category_slug: "feminino"
+  });
+
   return {
     props: {
       productsoferta,
       productsnovacolecao,
+      productsfeminino,
     },
   };
 }

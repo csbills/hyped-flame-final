@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { StoreProvider } from '../components/Store';
-import '../public/css/styles.css'
+import '../public/css/styles.css';
 
 export default function MyApp({ pageProps, Component }) {
   useEffect(() => {
